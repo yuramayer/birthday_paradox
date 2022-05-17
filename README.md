@@ -1,2 +1,2 @@
-# birthday_paradox
-birthday parardox solved for legal tech lab
+# Birthday paradox
+Code for «Birthday parardox». Solved for Legal Tech Lab.
