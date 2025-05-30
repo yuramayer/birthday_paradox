@@ -35,11 +35,25 @@ function runSimulation() {
     const birthdays = getRandomBirthdays(count);
     const result = hasMatchingBirthday(birthdays);
 
+    const dateCounts = {};
+    birthdays.forEach(d => {
+        const str = d.toDateString();
+        dateCounts[str] = (dateCounts[str] || 0) + 1;
+    });
+
     const formatted = birthdays
-        .map(d => d.toLocaleDateString('ru-RU', { month: 'short', day: 'numeric' }))
+        .map(d => {
+            const str = d.toDateString();
+            const label = d.toLocaleDateString('ru-RU', { month: 'short', day: 'numeric' });
+            if (dateCounts[str] > 1) {
+                return `<span class="circled">${label}</span>`;
+            }
+            return label;
+        })
         .join(', ');
 
     let html = `<p><strong>Сгенерированные дни рождения:</strong><br>${formatted}</p>`;
+
     if (result.match) {
         html += `<p style="color: crimson;"><strong>Совпадение!</strong> ${result.count} человек родились <em>${new Date(result.date).toLocaleDateString('ru-RU', { month: 'short', day: 'numeric' })}</em>.</p>`;
     } else {
@@ -48,3 +62,4 @@ function runSimulation() {
 
     resultDiv.innerHTML = html;
 }
+
