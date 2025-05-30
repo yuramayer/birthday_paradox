@@ -55,7 +55,7 @@ function runSimulation() {
     let html = `<p><strong>Сгенерированные дни рождения:</strong><br>${formatted}</p>`;
 
     if (result.match) {
-        html += `<p style="color: crimson;"><strong>Совпадение!</strong> ${result.count} человек родились <em>${new Date(result.date).toLocaleDateString('ru-RU', { month: 'short', day: 'numeric' })}</em>.</p>`;
+        html += `<p style="color: crimson;"><strong>Совпадение!</strong> ${result.count} человек родились <em>${new Date(result.date).toLocaleDateString('ru-RU', { month: 'short', day: 'numeric' })}</em></p>`;
     } else {
         html += `<p style="color: green;"><strong>Совпадений нет.</strong> Все дни рождения разные.</p>`;
     }
